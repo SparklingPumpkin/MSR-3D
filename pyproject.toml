@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "msr3d"
+version = "1.0.0"
+description = "MSR-3D fixed-weight inference for open-vocabulary instance matching"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = ["numpy==2.0.2", "scipy==1.16.2", "torch==2.5.1"]
+
+[project.scripts]
+msr3d = "msr3d.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+msr3d = ["assets/*.json", "assets/*.npz"]

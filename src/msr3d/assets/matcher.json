@@ -1,0 +1,21 @@
+{
+  "format_version": 1,
+  "model": "MSR-3D",
+  "version": "1.0.0",
+  "prototype_slots": 6,
+  "matrix_columns": 13,
+  "semantic": {
+    "topk": 2,
+    "score_power": 2.0,
+    "threshold_min": 0.8,
+    "threshold_max": 1.0
+  },
+  "anchor_threshold": 0.92,
+  "supplementary": {
+    "threshold": 0.9793008547801011,
+    "enabled": true,
+    "max_add": 1
+  },
+  "selection_threshold": 0.5,
+  "weights_sha256": "7922f40118bfef2a8e0b4f12d9e6806e9462f365ecb4782e440ada32d09d464e"
+}
