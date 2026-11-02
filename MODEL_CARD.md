@@ -12,6 +12,6 @@
 
 **Limitations:** performance depends on upstream representations, instance inventory, feature normalization and scene domain. Missing, fragmented or merged instances cannot be repaired by this matcher. S3 has not demonstrated a consistent benefit across held-out scenes or datasets; numerical agreement with a reference does not establish such a benefit. Fixed-seed CPU parity was checked on cached inputs, not an independent raw-image evaluation.
 
-**Assets:** no benchmark examples, ground-truth masks, raw images, external encoder weights, training checkpoints or optimization state are distributed. The included example generator produces synthetic numerical arrays only.
+**Data:** the companion benchmark feature bundle supplies cached real-query inputs, processed evaluation masks, annotations and reference outputs. The example generator produces synthetic numerical arrays. Benchmark usage and metric definitions are documented in the bundle's `PROTOCOL.md`.
 
 **Rights:** this distribution does not add a permissive license or change ownership of the code or learned parameters. No rights to third-party assets are granted. The project rights holder determines licensing for redistribution and reuse.
