@@ -4,11 +4,14 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "msr3d"
-version = "1.0.0"
-description = "MSR-3D fixed-weight inference for open-vocabulary instance matching"
+version = "1.1.0"
+description = "MSR-3D scene-to-query inference for open-vocabulary 3D instance matching"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = ["numpy==2.0.2", "scipy==1.16.2", "torch==2.5.1"]
+
+[project.optional-dependencies]
+frontend = ["torchvision==0.20.1", "imageio==2.37.0", "plyfile==1.1", "PyYAML==6.0.2", "Pillow==11.3.0", "clip @ git+https://github.com/openai/CLIP.git@dcba3cb2e2827b402d2701e7e1c7d9fed8a20ef1", "segment-anything @ git+https://github.com/facebookresearch/segment-anything.git@dca509fe793f601edb92606367a655c15ac00fdf"]
 
 [project.scripts]
 msr3d = "msr3d.__main__:main"

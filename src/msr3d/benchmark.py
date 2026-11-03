@@ -98,6 +98,24 @@ def evaluate(root, split='all'):
     for query in queries:
         result = model.predict(load_query(_path(root, query['features'])))
         predictions.append({'dataset': query['dataset'], 'query_id': query['query_id'], **result})
+    metadata = {'data_version': manifest['data_version'], 'package_version': __version__,
+                'manifest_sha256': _sha256(root / 'manifest.json'),
+                'model_weights_sha256': manifest['model_weights_sha256'],
+                'model_config_sha256': manifest['model_config_sha256'], 'requested_split': split,
+                'environment': {'numpy': np.__version__, 'scipy': scipy.__version__, 'torch': torch.__version__}}
+    result = evaluate_predictions(root, queries, predictions, metadata=metadata, split=split)
+    result['data_version'] = manifest['data_version']
+    return result
+
+
+def evaluate_predictions(root, queries, predictions, metadata=None, split='all'):
+    """Evaluate already-generated predictions; never open cached matching inputs."""
+    root = Path(root)
+    keys = lambda row: (row['dataset'], row['query_id'])
+    if len(queries) != len(predictions) or any(keys(q) != keys(p) for q, p in zip(queries, predictions)):
+        raise ValueError('Prediction/query inventory mismatch')
+    if len({keys(q) for q in queries}) != len(queries):
+        raise ValueError('Duplicate evaluation query')
     per_query, per_frame = [], []
     # Each scene/frame/shape has a single immutable mask bank, reused across queries.
     cache_path, cache = None, None
@@ -138,12 +156,7 @@ def evaluate(root, split='all'):
     splits = sorted({s for row in per_query for s in row['splits']})
     summary = {s: aggregate([r for r in per_query if s in r['splits']]) for s in splits
                if split == 'all' or s == split}
-    metadata = {'data_version': manifest['data_version'], 'package_version': __version__,
-                'manifest_sha256': _sha256(root / 'manifest.json'),
-                'model_weights_sha256': manifest['model_weights_sha256'],
-                'model_config_sha256': manifest['model_config_sha256'], 'requested_split': split,
-                'environment': {'numpy': np.__version__, 'scipy': scipy.__version__, 'torch': torch.__version__}}
-    return {'data_version': manifest['data_version'], 'metadata': metadata, 'predictions': predictions,
+    return {'metadata': metadata or {}, 'predictions': predictions,
             'per_query': per_query, 'per_frame': per_frame, 'summary': summary}
 
 
