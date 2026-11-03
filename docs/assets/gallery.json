@@ -1,5 +1,16 @@
 [
   {
+    "id": "blue_sofa-a_squirrel_pig_doll",
+    "scene": "Blue Sofa",
+    "query": "a squirrel pig doll",
+    "original": "assets/examples/blue_sofa-a_squirrel_pig_doll/original.webp",
+    "selected": "assets/examples/blue_sofa-a_squirrel_pig_doll/selected.webp",
+    "alt": "Selected example: a squirrel pig doll in the blue sofa scene.",
+    "frame": "frame_00013",
+    "dataset": "3dovs61",
+    "miou": 0.9747838359408686
+  },
+  {
     "id": "bench-orange_cat",
     "scene": "Bench",
     "query": "orange cat",
@@ -42,17 +53,6 @@
     "frame": "frame_00025",
     "dataset": "lerf67",
     "miou": 0.9472745168582755
-  },
-  {
-    "id": "blue_sofa-a_squirrel_pig_doll",
-    "scene": "Blue Sofa",
-    "query": "a squirrel pig doll",
-    "original": "assets/examples/blue_sofa-a_squirrel_pig_doll/original.webp",
-    "selected": "assets/examples/blue_sofa-a_squirrel_pig_doll/selected.webp",
-    "alt": "Selected example: a squirrel pig doll in the blue sofa scene.",
-    "frame": "frame_00013",
-    "dataset": "3dovs61",
-    "miou": 0.9747838359408686
   },
   {
     "id": "room-dinosaur",
