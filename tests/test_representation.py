@@ -6,6 +6,36 @@ from msr3d.representation.scene import construct_scene, make_query_features
 
 
 class RepresentationTest(unittest.TestCase):
+    def test_geometric_query_uses_independent_valid_normalized_anchor_bank(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            prototypes = np.zeros((2, 6, 768), dtype=np.float32)
+            prototypes[0, 0, 0] = prototypes[0, 3, 1] = prototypes[1, 2, 0] = 1.
+            valid = np.zeros((2, 6), dtype=bool)
+            valid[0, [0, 3]] = valid[1, 2] = True
+            np.savez(root / 'representation.npz',
+                instance_ids=np.asarray(['instance_0001', 'instance_0002']),
+                prototype_features=prototypes, prototype_valid=valid,
+                prototype_attributes=np.zeros((2, 6, 7), dtype=np.float32),
+                instance_attributes=np.zeros((2, 4), dtype=np.float32),
+                shared_means=np.zeros((2, 768), dtype=np.float32))
+            anchors = np.zeros((3, 768), dtype=np.float32)
+            anchors[:, :2] = [[0., -9.], [4., 0.], [3., 4.]]
+            np.savez(root / 'anchors.npz',
+                instance_ids=np.asarray(['instance_0099', 'instance_0001', 'instance_0002']),
+                embeddings=anchors, valid=np.asarray([True, False, True]))
+            query = np.zeros(768, dtype=np.float32)
+            query[:2] = [6., 8.]
+
+            item = make_query_features(root, query, 'geometric_topk', root / 'anchors.npz')
+
+            self.assertEqual(item.instance_ids, ['instance_0001', 'instance_0002'])
+            self.assertEqual(item.anchor_instance_ids, ['instance_0099', 'instance_0002'])
+            np.testing.assert_allclose(item.anchor_similarities, [-.8, 1.], atol=1e-6)
+            np.testing.assert_array_equal(item.valid, valid)
+            np.testing.assert_allclose(item.matrix[:, :, 0][valid], [.6, .8, .6], atol=1e-6)
+            np.testing.assert_array_equal(item.matrix[~valid], 0.)
+
     def test_source_balanced_prototypes_and_query_column_conventions(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)

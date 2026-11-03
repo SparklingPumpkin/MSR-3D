@@ -1,0 +1,40 @@
+{
+  "code_version": "1.2.0",
+  "data_version": "1.1.0",
+  "date": "2026-11-03",
+  "cold_start": {
+    "scenes": 10,
+    "dataset": "3dovs61",
+    "queries": 61,
+    "selections_and_metrics_exact": true,
+    "anchor_banks_bitwise_exact": 10
+  },
+  "supplied_pool_shortcut": {
+    "scenes": 10,
+    "selections_and_metrics_exact": true
+  },
+  "cached_evaluation": {
+    "queries": 128,
+    "all_predictions_and_metrics_exact": true
+  },
+  "cpu_tests_passed": 23,
+  "scene_macro": {
+    "lerf67": {
+      "miou": 0.6470333816143368,
+      "mf1": 0.7263450834879406,
+      "macc": 0.8551587301587302
+    },
+    "lerf45": {
+      "miou": 0.6314854804989357,
+      "mf1": 0.7283089133089132,
+      "macc": 0.8320512820512821
+    },
+    "3dovs61": {
+      "miou": 0.8097994822345562,
+      "mf1": 0.8302380952380952,
+      "macc": 0.95
+    }
+  },
+  "weights_sha256": "7922f40118bfef2a8e0b4f12d9e6806e9462f365ecb4782e440ada32d09d464e",
+  "environment_scope": "Same machine; existing offline CUDA dependency environment; code imported from release worktree. No online clean-environment installation tested."
+}

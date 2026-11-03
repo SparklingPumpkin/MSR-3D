@@ -240,7 +240,7 @@ def build_scene(
                         )
                         acrops.extend(images[0])
                         amasks.extend(cmasks[0].unsqueeze(1))
-                    # The archived geometric anchor used all three crops in one 15-image call.
+                    # Encode all three crops together; select crops only before averaging.
                     torch.backends.cudnn.allow_tf32 = True
                     embeddings = encoder.images(acrops, amasks)
                     if contract["anchor_crop_selection"] == "middle":
@@ -290,7 +290,11 @@ def build_scene(
                 "pool_encoding": "historical singleton, cuDNN TF32 enabled"
                 if reference_precision
                 else "batch FP32, cuDNN TF32 disabled",
-                "anchor_encoding": "original all-crop batch and cuDNN default precision",
+                "anchor_encoding": (
+                    "all-three-crop batch, cuDNN TF32 enabled; "
+                    + ("middle crop mean" if contract["anchor_crop_selection"] == "middle"
+                       else "all-three-crop mean")
+                ) if contract["s1_adapter"] == "geometric_topk" else "shared pool mean",
                 "seconds": time.monotonic() - start,
             },
             indent=2,

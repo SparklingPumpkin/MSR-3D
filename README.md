@@ -4,6 +4,8 @@ Inference code and pretrained matching weights for **Multi-Mode Semantic Represe
 
 The pipeline builds multi-view observation pools from reconstructed and segmented scenes, constructs per-instance MSR-3D representations, and matches text queries to instances.
 
+Code **v1.2.0** pairs with data **v1.1.0**. This input revision uses geometric top-five, middle-crop anchors for 3DOVS; LERF retains all-three-crop anchors. Matching weights are unchanged. See [MODEL_CARD.md](MODEL_CARD.md) for the experiment results and validation limits.
+
 ## Install
 
 Python 3.11, an NVIDIA GPU and a CUDA toolkit compatible with PyTorch are required.
@@ -27,7 +29,7 @@ Download the preprocessed scenes and optional observation pools/representations 
 
 ```bash
 pip install huggingface_hub
-hf download KaiLai/MSR-3D-Data --repo-type dataset --local-dir ../MSR-3D-Data
+hf download KaiLai/MSR-3D-Data --repo-type dataset --revision v1.1.0 --local-dir ../MSR-3D-Data
 python ../MSR-3D-Data/tools/prepare.py \
   --output ../msr3d-data \
   --lerf-root /path/to/lerf_ovs \
