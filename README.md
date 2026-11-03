@@ -1,5 +1,7 @@
 # MSR-3D
 
+[Project page](https://SparklingPumpkin.github.io/MSR-3D/) · [Data](https://huggingface.co/datasets/KaiLai/MSR-3D-Data/tree/v1.1.0)
+
 Inference code and pretrained matching weights for **Multi-Mode Semantic Representation for Open-Vocabulary 3D Scene Understanding**.
 
 The pipeline builds multi-view observation pools from reconstructed and segmented scenes, constructs per-instance MSR-3D representations, and matches text queries to instances.
