@@ -29,8 +29,8 @@ Expected: `docs/assets/poster/` exists.
 - [ ] **Step 2: Copy the released v5.2 poster files unchanged**
 
 ```bash
-cp -p /media/usv012/fjn/projects/3dgs/MSR-3D-release-asserts/poster/deliverables/MSR-3D-poster.pdf docs/assets/poster/MSR-3D-poster.pdf
-cp -p /media/usv012/fjn/projects/3dgs/MSR-3D-release-asserts/poster/deliverables/MSR-3D-poster.png docs/assets/poster/MSR-3D-poster.png
+cp -p /media/usv012/fjn/projects/fjn-projects/MSR-3D_NIPS-released/Poster/deliverables/MSR-3D-poster.pdf docs/assets/poster/MSR-3D-poster.pdf
+cp -p /media/usv012/fjn/projects/fjn-projects/MSR-3D_NIPS-released/Poster/deliverables/MSR-3D-poster.png docs/assets/poster/MSR-3D-poster.png
 ```
 
 Expected: both files exist and are non-empty.
@@ -38,8 +38,8 @@ Expected: both files exist and are non-empty.
 - [ ] **Step 3: Verify byte identity and record asset hashes**
 
 ```bash
-cmp /media/usv012/fjn/projects/3dgs/MSR-3D-release-asserts/poster/deliverables/MSR-3D-poster.pdf docs/assets/poster/MSR-3D-poster.pdf
-cmp /media/usv012/fjn/projects/3dgs/MSR-3D-release-asserts/poster/deliverables/MSR-3D-poster.png docs/assets/poster/MSR-3D-poster.png
+cmp /media/usv012/fjn/projects/fjn-projects/MSR-3D_NIPS-released/Poster/deliverables/MSR-3D-poster.pdf docs/assets/poster/MSR-3D-poster.pdf
+cmp /media/usv012/fjn/projects/fjn-projects/MSR-3D_NIPS-released/Poster/deliverables/MSR-3D-poster.png docs/assets/poster/MSR-3D-poster.png
 sha256sum docs/assets/poster/MSR-3D-poster.pdf docs/assets/poster/MSR-3D-poster.png
 ```
 
@@ -76,15 +76,15 @@ State that the PDF is the print version and the PNG is the 150-DPI preview. Link
 
 - [ ] **Step 3: Add the verified result summary and release versions**
 
-Use scene-averaged mIoU gains from the current project page:
+Use scene-averaged mIoU gains from the current project page and name OpenSplat3D as the strongest compared method for these columns:
 
-| Evaluation set | Scope | mIoU gain over strongest compared method |
-|---|---|---:|
-| LERF-OVS | 67 queries | +6.69 |
-| LERF-OVS unseen-string subset | 45 queries | +3.46 |
-| 3DOVS | 61 queries, 10 scenes | +1.57 |
+| Evaluation set | Scope | MSR-3D mIoU | OpenSplat3D mIoU | Gain |
+|---|---|---:|---:|---:|
+| LERF-OVS | 67 queries | 64.70 | 58.01 | +6.69 |
+| LERF-OVS unseen-string subset | 45 queries | 63.15 | 59.69 | +3.46 |
+| 3DOVS | 61 queries, 10 scenes | 80.98 | 79.41 | +1.57 |
 
-Label the values as percentage-point mIoU gains, link to the project-page full table and `MODEL_CARD.md`, and retain the model-card caveat that release validation was on the same machine and that a fresh online clean-environment installation was not verified. State code v1.2.0 and data v1.1.0.
+Label the gains as percentage points; note that all methods use the same reconstruction and object candidates; link to the project-page full table and `MODEL_CARD.md`; and retain the model-card caveat that release validation was on the same machine and that a fresh online clean-environment installation was not verified. State code v1.2.0 and data v1.1.0.
 
 - [ ] **Step 4: Retain and organize reproducibility instructions**
 
@@ -126,13 +126,14 @@ root = Path.cwd()
 text = (root / "README.md").read_text()
 targets = re.findall(r"\[[^\]]*\]\(([^)]+)\)", text)
 images = re.findall(r"!\[[^\]]*\]\(([^)]+)\)", text)
-for target in [*targets, *images]:
+html_images = re.findall(r'<img[^>]+src="([^"]+)"', text)
+for target in [*targets, *images, *html_images]:
     if target.startswith(("https://", "http://", "#", "mailto:")):
         continue
     path = (root / target.split("#", 1)[0]).resolve()
     assert path.is_relative_to(root.resolve()), f"path escapes repository: {target}"
     assert path.is_file(), f"missing local README target: {target}"
-print(f"Validated {len(targets)} Markdown links and {len(images)} image references.")
+print(f"Validated {len(targets)} Markdown links, {len(images)} Markdown images, and {len(html_images)} HTML images.")
 PY
 ```
 
@@ -148,10 +149,12 @@ Expected: both exit 0.
 
 ```bash
 git diff --check
-git diff -- README.md docs/assets/poster
+git diff -- README.md
+git status --short
+ls -lh docs/assets/poster/MSR-3D-poster.pdf docs/assets/poster/MSR-3D-poster.png
 ```
 
-Expected: no whitespace errors; only the approved README and two poster files are changed, apart from the already committed design and plan documents.
+Expected: no whitespace errors; the README diff and status show only the approved README and two poster files as deliverable changes, apart from the already committed design and plan documents.
 
 - [ ] **Step 4: Record the existing test baseline without changing code**
 

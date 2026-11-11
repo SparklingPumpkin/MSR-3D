@@ -22,7 +22,7 @@ The README is for research readers and practitioners discovering the NeurIPS 202
 ## Assets and file changes
 
 - Modify the repository root `README.md`.
-- Add `docs/assets/poster/MSR-3D-poster.png` and `docs/assets/poster/MSR-3D-poster.pdf`, copied unchanged from the v5.2 poster deliverables.
+- Add `docs/assets/poster/MSR-3D-poster.png` and `docs/assets/poster/MSR-3D-poster.pdf`, copied unchanged from `/media/usv012/fjn/projects/fjn-projects/MSR-3D_NIPS-released/Poster/deliverables/`.
 - Do not modify inference code, model weights, data, project-page content, or third-party files.
 - Do not invite or otherwise change access for the `pym96` GitHub account in this task.
 
