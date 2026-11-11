@@ -7,3 +7,9 @@ dist/
 .pytest_cache/
 outputs/
 data/
+
+# Local native-extension build artifacts (including the CUDA rasterizer).
+*.so
+
+# macOS Finder metadata.
+.DS_Store
