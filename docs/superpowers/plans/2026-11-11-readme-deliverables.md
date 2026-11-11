@@ -148,13 +148,13 @@ Expected: both exit 0.
 - [ ] **Step 3: Review README diff and whitespace**
 
 ```bash
-git diff --check
+git diff --check -- README.md
 git diff -- README.md
 git status --short
 ls -lh docs/assets/poster/MSR-3D-poster.pdf docs/assets/poster/MSR-3D-poster.png
 ```
 
-Expected: no whitespace errors; the README diff and status show only the approved README and two poster files as deliverable changes, apart from the already committed design and plan documents.
+Expected: no README whitespace errors; the README diff and status show only the approved README and two poster files as deliverable changes, apart from the already committed design and plan documents. Do not run `git diff --check` against the new PDF, which Git may display as a text-like diff.
 
 - [ ] **Step 4: Record the existing test baseline without changing code**
 
