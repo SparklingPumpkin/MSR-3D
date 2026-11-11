@@ -12,18 +12,22 @@
   <a href="https://SparklingPumpkin.github.io/MSR-3D/">Project page &amp; interactive 3D demo</a> ·
   <a href="https://SparklingPumpkin.github.io/MSR-3D/#video">Overview video</a> ·
   <a href="https://huggingface.co/datasets/KaiLai/MSR-3D-Data/tree/v1.1.0">Data v1.1.0</a> ·
-  <a href="docs/assets/poster/MSR-3D-poster.pdf">Poster PDF</a>
+  <a href="#method-overview">Method overview</a>
 </p>
 
 MSR-3D matches open-vocabulary text queries to physical instances in reconstructed 3D scenes. Instead of averaging an object's different views into one feature, it keeps a prototype for each appearance mode and learns to match a query across those prototypes.
 
+## Method overview
+
+The paper's framework builds a raw observation pool from 2D and 3D segmentation evidence, compresses it into a multi-mode representation, and uses a mode-aware matcher to select 3D instances for a text query.
+
 <p align="center">
-  <a href="docs/assets/poster/MSR-3D-poster.pdf">
-    <img src="docs/assets/poster/MSR-3D-poster.png" alt="MSR-3D research poster; click to open the print-ready PDF" width="100%">
-  </a>
+  <img src="docs/assets/figures/msr3d-method-overview.png" alt="MSR-3D framework: raw observation pool, multi-mode representation, and mode-aware matcher" width="100%">
 </p>
 
-The poster is available as a [1400 × 900 mm print-ready PDF](docs/assets/poster/MSR-3D-poster.pdf) and a [150-DPI PNG preview](docs/assets/poster/MSR-3D-poster.png). Watch the [overview video](https://SparklingPumpkin.github.io/MSR-3D/#video) on the project page.
+<p align="center"><em>Overview of MSR-3D, reproduced from the paper's method figure.</em></p>
+
+Watch the [overview video](https://SparklingPumpkin.github.io/MSR-3D/#video) on the project page.
 
 ## Results
 
