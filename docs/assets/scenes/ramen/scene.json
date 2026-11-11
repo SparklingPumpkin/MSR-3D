@@ -1,0 +1,341 @@
+{
+  "spz": "scene.spz",
+  "instances": "instances.u16",
+  "count": 258241,
+  "source": {
+    "ply": "scene.ply",
+    "ply_sha256": "6f6e9b87b71f691693f353768f6402b77cbd1be7536c78dc5f25b8a751940cfe",
+    "instances": "instances.npy",
+    "instances_sha256": "1eec561f21a792caf25ecf1ab44da42b082c40b0b9d11da25367195551ecf9be",
+    "splats_in": 331797,
+    "opacity_min": 0.05,
+    "max_sh": 0
+  },
+  "bbox": [
+    [
+      -8.0536,
+      -5.725,
+      -14.4078
+    ],
+    [
+      15.0504,
+      26.8672,
+      16.1009
+    ]
+  ],
+  "bytes": {
+    "spz": 4446310,
+    "instances": 516482
+  },
+  "title": "ramen",
+  "benchmark": "LERF-OVS",
+  "caption": "LERF-OVS · ramen · 14 benchmark queries",
+  "note": "Every benchmark query of this scene is listed, misses included. The number is the IoU (%) of MSR-3D on the annotated views.",
+  "default_query": "nori",
+  "camera": {
+    "frame": "frame_00091",
+    "position": [
+      -1.407,
+      0.85318,
+      -1.51925
+    ],
+    "target": [
+      -1.3715,
+      1.09186,
+      2.28287
+    ],
+    "up": [
+      0.16108,
+      -0.98156,
+      0.10295
+    ],
+    "fov": 50.259,
+    "min_distance": 0.9524,
+    "max_distance": 11.4293
+  },
+  "queries": [
+    {
+      "text": "bowl",
+      "selected": [
+        95
+      ],
+      "positive": [
+        95
+      ],
+      "iou": 0.4915,
+      "f1": 1.0
+    },
+    {
+      "text": "chopsticks",
+      "selected": [
+        98
+      ],
+      "positive": [
+        98
+      ],
+      "iou": 0.9039,
+      "f1": 1.0
+    },
+    {
+      "text": "corn",
+      "selected": [
+        12
+      ],
+      "positive": [
+        12
+      ],
+      "iou": 0.5078,
+      "f1": 1.0
+    },
+    {
+      "text": "egg",
+      "selected": [
+        64
+      ],
+      "positive": [
+        48,
+        64
+      ],
+      "iou": 0.4813,
+      "f1": 0.6667
+    },
+    {
+      "text": "glass of water",
+      "selected": [
+        74,
+        84
+      ],
+      "positive": [
+        74,
+        81
+      ],
+      "iou": 0.5848,
+      "f1": 0.5
+    },
+    {
+      "text": "hand",
+      "selected": [
+        11,
+        90
+      ],
+      "positive": [
+        78
+      ],
+      "iou": 0.0,
+      "f1": 0.0
+    },
+    {
+      "text": "kamaboko",
+      "selected": [
+        66
+      ],
+      "positive": [
+        66
+      ],
+      "iou": 0.8654,
+      "f1": 1.0
+    },
+    {
+      "text": "napkin",
+      "selected": [
+        38,
+        59
+      ],
+      "positive": [
+        34,
+        59
+      ],
+      "iou": 0.1969,
+      "f1": 0.5
+    },
+    {
+      "text": "nori",
+      "selected": [
+        96
+      ],
+      "positive": [
+        96
+      ],
+      "iou": 0.8986,
+      "f1": 1.0
+    },
+    {
+      "text": "onion segments",
+      "selected": [
+        28,
+        49
+      ],
+      "positive": [],
+      "iou": 0.0372,
+      "f1": 0.0
+    },
+    {
+      "text": "plate",
+      "selected": [
+        42,
+        94
+      ],
+      "positive": [
+        94
+      ],
+      "iou": 0.2456,
+      "f1": 0.6667
+    },
+    {
+      "text": "sake cup",
+      "selected": [
+        60
+      ],
+      "positive": [
+        19,
+        60
+      ],
+      "iou": 0.3951,
+      "f1": 0.6667
+    },
+    {
+      "text": "spoon",
+      "selected": [
+        76
+      ],
+      "positive": [
+        76
+      ],
+      "iou": 0.7591,
+      "f1": 1.0
+    },
+    {
+      "text": "wavy noodles",
+      "selected": [
+        69,
+        104
+      ],
+      "positive": [
+        69
+      ],
+      "iou": 0.4743,
+      "f1": 0.6667
+    }
+  ],
+  "results": {
+    "file": "1a51de5b16040320-results.json",
+    "query_ids": [
+      "ramen::bowl",
+      "ramen::chopsticks",
+      "ramen::corn",
+      "ramen::egg",
+      "ramen::glass_of_water",
+      "ramen::hand",
+      "ramen::kamaboko",
+      "ramen::napkin",
+      "ramen::nori",
+      "ramen::onion_segments",
+      "ramen::plate",
+      "ramen::sake_cup",
+      "ramen::spoon",
+      "ramen::wavy_noodles"
+    ]
+  },
+  "centroids": {
+    "11": [
+      -1.2096,
+      5.0928,
+      11.6722
+    ],
+    "12": [
+      -1.1019,
+      1.4411,
+      2.566
+    ],
+    "28": [
+      -0.5056,
+      1.3346,
+      2.6172
+    ],
+    "38": [
+      3.5453,
+      18.1293,
+      -8.5941
+    ],
+    "42": [
+      2.8359,
+      0.3843,
+      4.7997
+    ],
+    "49": [
+      -0.9542,
+      1.3693,
+      2.6052
+    ],
+    "59": [
+      3.9008,
+      2.9488,
+      2.0144
+    ],
+    "60": [
+      3.0875,
+      1.1939,
+      2.3083
+    ],
+    "64": [
+      -0.8184,
+      2.2586,
+      1.6973
+    ],
+    "66": [
+      -0.567,
+      1.7901,
+      2.1987
+    ],
+    "69": [
+      -0.3616,
+      2.1123,
+      1.852
+    ],
+    "74": [
+      -2.6393,
+      0.9241,
+      2.8643
+    ],
+    "76": [
+      0.2403,
+      2.6906,
+      2.1403
+    ],
+    "84": [
+      4.7452,
+      5.5957,
+      -0.9164
+    ],
+    "90": [
+      4.9955,
+      2.3386,
+      0.0143
+    ],
+    "94": [
+      -0.3553,
+      2.3572,
+      2.742
+    ],
+    "95": [
+      -0.3936,
+      1.8089,
+      1.8249
+    ],
+    "96": [
+      -1.374,
+      1.0942,
+      2.2818
+    ],
+    "98": [
+      1.1242,
+      2.7747,
+      2.3579
+    ],
+    "104": [
+      2.8852,
+      -1.1413,
+      5.8978
+    ]
+  }
+}

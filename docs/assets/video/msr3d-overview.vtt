@@ -1,0 +1,130 @@
+WEBVTT
+
+00:00:00.350 --> 00:00:08.150
+MSR-3D: Multi-Mode Semantic Representation for Open-Vocabulary 3D Scene Understanding.
+
+00:00:08.310 --> 00:00:12.846
+In short: find an instance in a 3D scene, with words.
+
+00:00:13.783 --> 00:00:18.031
+Given a free-form text query, such as “toy elephant”,
+
+00:00:18.191 --> 00:00:23.831
+the goal is to select the matching instances among the reconstructed 3D objects.
+
+00:00:24.750 --> 00:00:29.022
+Across viewpoints, the same object can look very different.
+
+00:00:29.182 --> 00:00:34.246
+Occlusion and incomplete masks change the semantic evidence we observe.
+
+00:00:35.183 --> 00:00:41.807
+Existing methods typically compress these multi-view observations into a single semantic descriptor,
+
+00:00:41.967 --> 00:00:45.783
+which cannot represent the complete 3D instance.
+
+00:00:46.717 --> 00:00:51.493
+MSR-3D instead keeps several semantic modes per instance,
+
+00:00:51.653 --> 00:00:56.645
+each summarized by a representative feature and statistical attributes.
+
+00:00:57.583 --> 00:01:03.103
+For each candidate 3D instance, we first build a raw observation pool.
+
+00:01:03.263 --> 00:01:09.119
+2D-segmentation observations use SAM masks predicted on the original images.
+
+00:01:10.050 --> 00:01:17.658
+3D-segmentation observations use masks rendered by projecting the segmented 3D instance into each view.
+
+00:01:17.818 --> 00:01:23.938
+Both are encoded from the same cropped RGB context by a shared mask-conditioned encoder.
+
+00:01:24.850 --> 00:01:33.226
+The sources are complementary: 2D masks keep direct object evidence, while rendered masks stay stable under occlusion.
+
+00:01:33.386 --> 00:01:37.274
+Their view-wise features are retained rather than averaged.
+
+00:01:38.217 --> 00:01:42.273
+The pool is then lifted into a compact representation.
+
+00:01:42.433 --> 00:01:48.601
+Each prototype summarizes a group of nearby features and represents one semantic mode.
+
+00:01:49.517 --> 00:01:58.229
+Prototypes are chosen by three query-independent rules: a geometrically complete reference, source-balanced coverage, and diversity.
+
+00:01:58.389 --> 00:02:01.053
+They stay fixed during matching.
+
+00:02:01.983 --> 00:02:10.335
+Each prototype carries statistical attributes, such as coverage, support from the two sources, and local feature statistics,
+
+00:02:10.495 --> 00:02:13.759
+which indicate how reliable the mode is.
+
+00:02:14.683 --> 00:02:21.691
+Three instance-level attributes, such as source agreement and coverage structure, summarize the whole instance.
+
+00:02:21.851 --> 00:02:26.291
+Together, they form the multi-mode semantic representation.
+
+00:02:27.217 --> 00:02:33.577
+At query time, the text feature is compared with every prototype of each candidate instance.
+
+00:02:33.737 --> 00:02:42.185
+The mode-aware matcher combines these similarities with the statistical attributes into a three-dimensional score for each query–instance pair.
+
+00:02:43.117 --> 00:02:49.741
+Learned decision boundaries in this score space separate true matches from semantically related distractors.
+
+00:02:49.901 --> 00:02:54.437
+For the query knife, all five selected instances are knives:
+
+00:02:54.597 --> 00:02:59.517
+the answer is a set of 3D instances, not a single best match.
+
+00:03:00.450 --> 00:03:03.378
+Here are more qualitative results.
+
+00:03:03.538 --> 00:03:09.058
+In the ramen scene, the query nori selects the corresponding 3D instance.
+
+00:03:09.983 --> 00:03:15.479
+In the bench scene, orange cat identifies the target among nearby objects.
+
+00:03:16.417 --> 00:03:20.593
+In the room scene, dinosaur selects the toy dinosaur.
+
+00:03:20.753 --> 00:03:27.089
+Each selection is a set of reconstructed Gaussians, so it can be inspected from any viewpoint.
+
+00:03:28.017 --> 00:03:33.009
+We report scene-averaged mIoU and mF1.
+
+00:03:33.169 --> 00:03:43.057
+On LERF67, MSR-3D reaches 64.70% mIoU and 72.63% mF1,
+
+00:03:43.217 --> 00:03:49.049
+6.69 and 11.56 points above the strongest baseline.
+
+00:03:49.983 --> 00:03:55.575
+On LERF45, whose query strings never appear in the training supervision,
+
+00:03:55.735 --> 00:03:59.671
+MSR-3D keeps its lead in both metrics.
+
+00:04:00.583 --> 00:04:12.415
+On 3DOVS61, ten scenes with sixty-one scene–query entries, it reaches 80.98% mIoU and 83.02% mF1,
+
+00:04:12.575 --> 00:04:15.479
+the best among the compared methods.
+
+00:04:16.417 --> 00:04:25.681
+MSR-3D turns complementary observations into multiple semantic modes, then learns to combine their evidence for instance selection.
+
+00:04:25.841 --> 00:04:31.193
+Code, pretrained parameters and data are available on our project page.

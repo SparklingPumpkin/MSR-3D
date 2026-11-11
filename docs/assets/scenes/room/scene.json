@@ -1,0 +1,170 @@
+{
+  "spz": "scene.spz",
+  "instances": "instances.u16",
+  "count": 119206,
+  "source": {
+    "ply": "scene.ply",
+    "ply_sha256": "ad03d060414509a01dcb9dc4caacf78bbe6863f37b7aa57aac18511e002f7d84",
+    "instances": "instances.npy",
+    "instances_sha256": "4980f1e1a6c1a5d31326e9cdbb9be2cff53b842d824bf7bef012feb105370134",
+    "splats_in": 137735,
+    "opacity_min": 0.05,
+    "max_sh": 0
+  },
+  "bbox": [
+    [
+      -55.4454,
+      -35.4619,
+      7.6295
+    ],
+    [
+      31.369,
+      8.6369,
+      68.622
+    ]
+  ],
+  "bytes": {
+    "spz": 2107203,
+    "instances": 238412
+  },
+  "title": "room",
+  "benchmark": "3D-OVS",
+  "caption": "3D-OVS · room · 6 benchmark queries",
+  "note": "Every benchmark query of this scene is listed, misses included. The number is the IoU (%) of MSR-3D on the annotated views.",
+  "default_query": "dinosaur",
+  "camera": {
+    "frame": "26",
+    "position": [
+      -2.14693,
+      3.56666,
+      3.34918
+    ],
+    "target": [
+      -2.95438,
+      3.25961,
+      11.96012
+    ],
+    "up": [
+      -0.00337,
+      -0.9666,
+      -0.25625
+    ],
+    "fov": 50.476,
+    "min_distance": 2.1635,
+    "max_distance": 25.9625
+  },
+  "queries": [
+    {
+      "text": "baseball",
+      "selected": [
+        33
+      ],
+      "positive": [
+        33
+      ],
+      "iou": 0.9694,
+      "f1": 1.0
+    },
+    {
+      "text": "dinosaur",
+      "selected": [
+        31
+      ],
+      "positive": [
+        31
+      ],
+      "iou": 0.9284,
+      "f1": 1.0
+    },
+    {
+      "text": "rabbit",
+      "selected": [
+        24
+      ],
+      "positive": [
+        24
+      ],
+      "iou": 0.9661,
+      "f1": 1.0
+    },
+    {
+      "text": "shrilling chicken",
+      "selected": [
+        26
+      ],
+      "positive": [
+        26
+      ],
+      "iou": 0.677,
+      "f1": 1.0
+    },
+    {
+      "text": "weaving basket",
+      "selected": [
+        30
+      ],
+      "positive": [
+        30,
+        35
+      ],
+      "iou": 0.8887,
+      "f1": 0.6667
+    },
+    {
+      "text": "wood wall",
+      "selected": [
+        35
+      ],
+      "positive": [
+        30,
+        34,
+        35
+      ],
+      "iou": 1.0,
+      "f1": 0.5
+    }
+  ],
+  "results": {
+    "file": "1a51de5b16040320-results.json",
+    "query_ids": [
+      "room::baseball",
+      "room::dinosaur",
+      "room::rabbit",
+      "room::shrilling_chicken",
+      "room::weaving_basket",
+      "room::wood_wall"
+    ]
+  },
+  "centroids": {
+    "24": [
+      4.6335,
+      -0.0474,
+      16.8015
+    ],
+    "26": [
+      -1.5586,
+      -5.0027,
+      17.5072
+    ],
+    "30": [
+      -3.7779,
+      0.2893,
+      15.3948
+    ],
+    "31": [
+      -2.9035,
+      3.2254,
+      11.9798
+    ],
+    "33": [
+      1.559,
+      2.4277,
+      13.9848
+    ],
+    "35": [
+      1.2375,
+      -15.704,
+      34.4899
+    ]
+  }
+}
