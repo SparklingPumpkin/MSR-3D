@@ -23,7 +23,7 @@ MSR-3D matches open-vocabulary text queries to physical instances in reconstruct
   </a>
 </p>
 
-The poster is available as a [print-ready PDF](docs/assets/poster/MSR-3D-poster.pdf) and a [150-DPI PNG preview](docs/assets/poster/MSR-3D-poster.png). Watch the [overview video](https://SparklingPumpkin.github.io/MSR-3D/#video) on the project page.
+The poster is available as a [1400 × 900 mm print-ready PDF](docs/assets/poster/MSR-3D-poster.pdf) and a [150-DPI PNG preview](docs/assets/poster/MSR-3D-poster.png). Watch the [overview video](https://SparklingPumpkin.github.io/MSR-3D/#video) on the project page.
 
 ## Results
 
